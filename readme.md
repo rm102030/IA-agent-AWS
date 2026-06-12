@@ -1,5 +1,10 @@
 # AWS AI Agent con Prowler + Ollama
 
+ AWS AI Agent
+
+![Arquitectura AWS AI Agent](IA AWS.png)
+
+
 ## Descripción
 
 AWS AI Agent es un asistente de línea de comandos desarrollado en Python que permite consultar y analizar una cuenta AWS utilizando lenguaje natural.
