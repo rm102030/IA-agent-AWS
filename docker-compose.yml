@@ -1,0 +1,57 @@
+
+services:
+
+  aws-agent:
+
+    build: .
+
+    # Intel Mac
+    platform: linux/amd64
+
+    # Apple Silicon (M1/M2/M3/M4)
+    # platform: linux/arm64
+
+    container_name: aws-agent
+
+    restart: unless-stopped
+
+    stdin_open: true
+
+    tty: true
+
+    environment:
+
+      # Perfil AWS configurado localmente
+      AWS_PROFILE: default
+
+      # Región por defecto
+      AWS_REGION: us-east-1
+
+      # Ollama ejecutándose en el Mac
+      OLLAMA_URL: http://host.docker.internal:11434
+
+      # Modelo local
+      OLLAMA_MODEL: llama3.2:latest
+
+    volumes:
+
+      # Credenciales AWS locales
+      - ~/.aws:/root/.aws:ro
+
+      # Scripts, reportes y archivos del agente
+      - ./workspace:/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    working_dir: /workspace
+
+    command: sleep infinity
+
+  prowler:
+      image: toniblyx/prowler:latest
+      container_name: prowler
+      entrypoint:
+        - /bin/bash
+        - -c
+        - sleep infinity
+      volumes:
+        - ~/.aws:/home/prowler/.aws:ro
