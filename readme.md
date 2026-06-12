@@ -2,7 +2,7 @@
 
  AWS AI Agent
 
-![Arquitectura AWS AI Agent](IA AWS.png)
+![Arquitectura AWS AI Agent](ia-aws.png)
 
 
 ## Descripción
